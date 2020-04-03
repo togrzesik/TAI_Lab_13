@@ -7,13 +7,14 @@ import {DataService} from "../../services/data.service";
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
-  @Input() filterText: string;w
+  @Input() filterText: string;
   public items$: any;
 
   constructor(private service: DataService) {
   }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
   getAll() {
