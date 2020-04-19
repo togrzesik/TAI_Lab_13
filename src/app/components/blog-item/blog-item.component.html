@@ -1,6 +1,6 @@
 <blog-item-image [image]="image"></blog-item-image>
-<blog-item-text [text]="text"></blog-item-text>
-<a [routerLink]="['/blog/detail/1']">
+<blog-item-text [id]="id" [text]="text"></blog-item-text>
+<a [routerLink]="['/blog/detail/', id]">
   Więcej
 </a>
 

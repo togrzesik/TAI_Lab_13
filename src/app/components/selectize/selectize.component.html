@@ -1,0 +1,6 @@
+<input #input type="text">
+
+<ul>
+  <li *ngFor="let p of posts$">
+    <a [routerLink]="['/blog/detail/', p.id]" href="#"> {{ p.text }}</a></li>
+</ul>
