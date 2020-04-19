@@ -1,6 +1,10 @@
-<blog-item-image [image]="image"></blog-item-image>
-<blog-item-text [id]="id" [text]="text"></blog-item-text>
-<a [routerLink]="['/blog/detail/', id]">
-  Więcej
-</a>
+<div class="card mb-3" style="width: 40rem;">
+  <blog-item-image [image]="image"></blog-item-image>
+  <div class="card-body">
+    <blog-item-text [id]="id" [text]="text"></blog-item-text>
+    <a [routerLink]="['/blog/detail/', id]" class="btn btn-primary">
+      Więcej
+    </a>
+  </div>
+</div>
 
