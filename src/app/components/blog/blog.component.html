@@ -1,5 +1,5 @@
 <selectize></selectize>
 <div *ngFor="let item of items$ | filter: filterText">
-  <blog-item [id]="item.id" [image]="item.image" [text]="item.title">
+  <blog-item [id]="item.id" [image]="item.url" [text]="item.content">
   </blog-item>
 </div>

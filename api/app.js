@@ -3,21 +3,20 @@
 import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-import config from './config';
 import routes from './REST/routes';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
 const app = express();
-
-
 app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(config.databaseUrl, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}, (error) => {
+const databaseUrl = "mongodb://tai:taitai1@ds147180.mlab.com:47180/tai";
+
+mongoose.connect(databaseUrl, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}, (error) => {
   if (error) {
     console.error(error);
   } else {
@@ -33,6 +32,6 @@ process.on('SIGINT', () => {
 });
 
 routes(app);
-app.listen(config.port, () => {
+app.listen(3000, () => {
   console.info(`Server is running at ${config.port}`)
 });
