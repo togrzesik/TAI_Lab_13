@@ -33,5 +33,5 @@ process.on('SIGINT', () => {
 
 routes(app);
 app.listen(3000, () => {
-  console.info(`Server is running at ${config.port}`)
+  console.info(`Server is running at 3000`)
 });
