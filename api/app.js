@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import routes from './REST/routes';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import config from "./config";
 
 const app = express();
 app.use(express.static('public'));
@@ -14,9 +15,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-const databaseUrl = "mongodb://tai:taitai1@ds147180.mlab.com:47180/tai";
-
-mongoose.connect(databaseUrl, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}, (error) => {
+mongoose.connect(config.databaseUrl, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}, (error) => {
   if (error) {
     console.error(error);
   } else {
@@ -32,6 +31,6 @@ process.on('SIGINT', () => {
 });
 
 routes(app);
-app.listen(3000, () => {
+app.listen(config.port, () => {
   console.info(`Server is running at 3000`)
 });
