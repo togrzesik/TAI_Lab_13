@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -21,6 +21,10 @@ import {FilterPipe} from './pipes/filter.pipe';
 import {TextFormatDirective} from './directives/text-format.directive';
 import {SelectizeComponent} from './components/selectize/selectize.component';
 import {AddPostComponent} from './components/add-post/add-post.component';
+import {AuthService} from "./services/auth.service";
+import {AuthInterceptor} from "./services/auth.interceptor";
+import {LoginComponent} from './components/login/login.component';
+import {AuthGuard} from "./services/auth.guard";
 
 @NgModule({
   declarations: [
@@ -40,6 +44,7 @@ import {AddPostComponent} from './components/add-post/add-post.component';
     TextFormatDirective,
     SelectizeComponent,
     AddPostComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,16 @@ import {AddPostComponent} from './components/add-post/add-post.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [DataService],
+  providers: [
+    AuthService,
+    DataService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
