@@ -17,7 +17,7 @@ public class PostController {
         this.postService = postService;
     }
 
-      @CrossOrigin(origins = "http://localhost:4200")
+/*      @CrossOrigin(origins = "http://localhost:4200")
       @GetMapping("/api/posts")
       public List<Post> getAllPosts(){
           return postService.getAll();
@@ -27,5 +27,5 @@ public class PostController {
       @GetMapping("/api/posts/{id}")
       public Post get(@PathVariable int id){
           return postService.get(id);
-      }
+      } */
 }
